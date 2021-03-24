@@ -1,20 +1,30 @@
 package com.codecool.chessopen;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 public class ChessResults {
 
-    public List<String> getCompetitorsNamesFromFile(String fileName){
-        //TODO your code comes here
-        return null;
+    public List<String> getCompetitorsNamesFromFile(String fileName) {
+
+        List<String> resultsList = new ArrayList<String>();
+
+        try {
+            File results = new File("src/resources/results.txt");
+            Scanner myReader = new Scanner(results);
+
+            while (myReader.hasNextLine()) {
+                String line = myReader.nextLine();
+                resultsList.add(line);
+            }
+            myReader.close();
+
+        } catch (FileNotFoundException e ) {
+            System.out.print("File not found!");
+        }
+
+
+        return resultsList;
     }
 
 }
